@@ -710,29 +710,7 @@ async function fetchJSON(url){
   return res.json();
 }
 
-async function loadDashboardData(){
-  const noteEl = document.getElementById('data-source-note');
-  if(!CATALYST_API_BASE || CATALYST_API_BASE.includes('PASTE_YOUR')){
-    if(noteEl) noteEl.textContent = "Showing demo data — connect your Catalyst API URL in the code to go live.";
-    currentInventory = demoInventoryData;
-    currentInvoices = demoInvoiceData;
-    return;
-  }
-  try{
-    const [invResp, invoiceResp] = await Promise.all([
-      fetchJSON(CATALYST_API_BASE + '/inventory'),
-      fetchJSON(CATALYST_API_BASE + '/invoices')
-    ]);
-    currentInventory = invResp.inventory || [];
-    currentInvoices = invoiceResp.invoices || [];
-    if(noteEl) noteEl.textContent = "Live data from Zoho Inventory & Books";
-  }catch(err){
-    console.error('Failed to load live data, falling back to demo data:', err);
-    currentInventory = demoInventoryData;
-    currentInvoices = demoInvoiceData;
-    if(noteEl) noteEl.textContent = "Couldn't reach the live API — showing demo data instead.";
-  }
-}
+async function loadDashboardData(){const noteEl=document.getElementById('data-source-note');try{const data=await fetchJSON('data.json?t='+Date.now());currentInventory=data.inventory||[];currentInvoices=data.invoices||[];if(noteEl){noteEl.textContent=data.generatedAt?('Live data from Zoho Inventory and Books - Last synced '+data.generatedAt):'Live data from Zoho Inventory and Books';}}catch(err){console.error('Failed to load data.json, falling back to demo data:',err);currentInventory=demoInventoryData;currentInvoices=demoInvoiceData;if(noteEl)noteEl.textContent='Could not reach data.json - showing demo data instead.';}}
 
 function getStatus(row){
   if(row.qty <= 0) return "out";
