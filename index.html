@@ -307,7 +307,7 @@
   <div class="hero-content">
     <span class="eyebrow" style="color:var(--amber);">Chennai's rainy-day roastery</span>
     <h1>Brewed for the monsoon. Poured with warmth.</h1>
-    <p>Three outlets across Chennai serving small-batch filter coffee, cold brews and rain-day comfort food — with an AI assistant ready to help you order, book catering, or find your nearest outlet.</p>
+    <p>Three outlets across Chennai serving handcrafted coffees, cold brews and rain-day comfort food — with an AI assistant ready to help you order, book catering, or find your nearest outlet.</p>
     <div class="hero-ctas">
       <button class="btn btn-primary" onclick="openChat()">💬 Chat with Monsoon</button>
       <a href="#menu" class="btn btn-outline">View Menu</a>
@@ -358,29 +358,29 @@
   <div class="section-title">
     <span class="eyebrow">Taste the season</span>
     <h2>Our Menu</h2>
-    <p>Classic South Indian filter coffee, monsoon specials and light bites.</p>
+    <p>Handcrafted coffees, cold brews and Frappuccino® blends, plus fresh-baked bites.</p>
   </div>
   <div class="menu-grid">
     <div class="menu-category">
-      <h3>Filter Coffee</h3>
-      <div class="menu-item"><span>Classic Filter Coffee</span><span>₹60</span></div>
-      <div class="menu-item"><span>Degree Coffee (Strong)</span><span>₹75</span></div>
-      <div class="menu-item"><span>Chicory Blend</span><span>₹70</span></div>
-      <div class="menu-item"><span>Kumbakonam Special</span><span>₹85</span></div>
+      <h3>Handcrafted Coffees</h3>
+      <div class="menu-item"><span>Pike Place® Roast</span><span>₹160</span></div>
+      <div class="menu-item"><span>Caffè Americano</span><span>₹180</span></div>
+      <div class="menu-item"><span>Cappuccino</span><span>₹200</span></div>
+      <div class="menu-item"><span>Caramel Macchiato</span><span>₹240</span></div>
     </div>
     <div class="menu-category">
-      <h3>Monsoon Specials</h3>
-      <div class="menu-item"><span>Ginger Cardamom Brew</span><span>₹95</span></div>
-      <div class="menu-item"><span>Rain Cloud Cold Brew</span><span>₹140</span></div>
-      <div class="menu-item"><span>Masala Chai</span><span>₹55</span></div>
-      <div class="menu-item"><span>Hot Chocolate Storm</span><span>₹150</span></div>
+      <h3>Cold Coffees &amp; Frappuccino®</h3>
+      <div class="menu-item"><span>Cold Brew</span><span>₹220</span></div>
+      <div class="menu-item"><span>Caramel Frappuccino®</span><span>₹280</span></div>
+      <div class="menu-item"><span>Java Chip Frappuccino®</span><span>₹290</span></div>
+      <div class="menu-item"><span>Iced Caffè Mocha</span><span>₹250</span></div>
     </div>
     <div class="menu-category">
-      <h3>Bites</h3>
-      <div class="menu-item"><span>Bajji Platter</span><span>₹120</span></div>
-      <div class="menu-item"><span>Banana Chips & Filter Coffee Combo</span><span>₹150</span></div>
-      <div class="menu-item"><span>Sundal Bowl</span><span>₹90</span></div>
-      <div class="menu-item"><span>Rava Kesari</span><span>₹80</span></div>
+      <h3>Bakery &amp; Snacks</h3>
+      <div class="menu-item"><span>Blueberry Muffin</span><span>₹150</span></div>
+      <div class="menu-item"><span>Butter Croissant</span><span>₹140</span></div>
+      <div class="menu-item"><span>Chocolate Croissant</span><span>₹160</span></div>
+      <div class="menu-item"><span>Everything Bagel with Cream Cheese</span><span>₹180</span></div>
     </div>
   </div>
 </section>
@@ -396,7 +396,7 @@
     <div class="catering-card">
       <ul class="fact-list">
         <li><span class="num">50+</span> Minimum order for on-site catering</li>
-        <li><span class="num">3</span> Live counters: filter coffee, cold brew, chai</li>
+        <li><span class="num">3</span> Live counters: espresso bar, cold brew, Frappuccino®</li>
         <li><span class="num">24 hrs</span> Advance notice required</li>
         <li><span class="num">₹99</span> Starting price per head</li>
       </ul>
@@ -591,7 +591,7 @@ function handleResponse(text){
   if(lower.includes('hour') || lower.includes('outlet') || lower.includes('open')){
     reply = "We're open daily — Anna Nagar 7AM–11PM, Adyar 8AM–10:30PM, OMR 8AM–12AM. Want directions to a specific outlet?";
   } else if(lower.includes('menu') || lower.includes('price') || lower.includes('coffee')){
-    reply = "Our filter coffee starts at ₹60, monsoon specials from ₹55, and bites from ₹80. Check the Menu section above for the full list!";
+    reply = "Our handcrafted coffees start at ₹160, cold coffees & Frappuccino® from ₹220, and bakery bites from ₹140. Check the Menu section above for the full list!";
   } else if(lower.includes('cater')){
     reply = "Catering starts at ₹99/head for a minimum of 50 guests, with 24 hours' notice. Want me to connect you to our events team?";
   } else if(lower.includes('staff') || lower.includes('login') || lower.includes('admin') || lower.includes('stock') || lower.includes('inventory')){
