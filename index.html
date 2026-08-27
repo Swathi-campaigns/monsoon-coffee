@@ -477,6 +477,7 @@
 
 <!-- ADMIN DASHBOARD -->
 <div id="admin-dashboard">
+    <agents-chatkit id="staff-chatkit" ziaAgents='{orgId:"60079391537", entityId:"1215000000141332"}'></agents-chatkit>
   <div class="admin-topbar">
     <div class="brand"><span class="drop"></span> Monsoon Coffee — Admin</div>
     <button class="logout-btn" onclick="logoutAdmin()">Log Out</button>
@@ -781,6 +782,7 @@ function renderInvoices(){
 
 async function openAdminDashboard(){
   document.getElementById('admin-dashboard').classList.add('open');
+  document.getElementById('customer-chatkit').style.display='none';
   const note = document.getElementById('data-source-note');
   if(note) note.textContent = "Loading...";
   await loadDashboardData();
@@ -791,8 +793,9 @@ async function openAdminDashboard(){
 }
 function logoutAdmin(){
   document.getElementById('admin-dashboard').classList.remove('open');
+  document.getElementById('customer-chatkit').style.display='';
 }
 </script>
-  <script src="https://agents.zoho.in/resources/addon-chat/assets/js/agents-chat-sdk.js"></script><agents-chatkit ziaAgents='{orgId:"60079391537", entityId:"1215000000111060"}'></agents-chatkit>
+  <script src="https://agents.zoho.in/resources/addon-chat/assets/js/agents-chat-sdk.js"></script><agents-chatkit id="customer-chatkit" ziaAgents='{orgId:"60079391537", entityId:"1215000000111060"}'></agents-chatkit>
 </body>
 </html>
