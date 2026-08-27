@@ -477,7 +477,6 @@
 
 <!-- ADMIN DASHBOARD -->
 <div id="admin-dashboard">
-    <agents-chatkit id="staff-chatkit" ziaAgents='{orgId:"60079391537", entityId:"1215000000141332"}'></agents-chatkit>
   <div class="admin-topbar">
     <div class="brand"><span class="drop"></span> Monsoon Coffee — Admin</div>
     <button class="logout-btn" onclick="logoutAdmin()">Log Out</button>
@@ -631,8 +630,9 @@ function pinPress(digit){
     setTimeout(()=>{
       if(currentPin === DEMO_PIN){
         closePinModal();
-        toggleChatClosedOnly();
-        openAdminDashboard();
+        sessionStorage.setItem("mccStaffView","1");
+        sessionStorage.setItem("mccAdminOpen","1");
+        location.reload();
       } else {
         pinError.textContent = "Incorrect PIN. Try again.";
         currentPin = "";
@@ -782,7 +782,6 @@ function renderInvoices(){
 
 async function openAdminDashboard(){
   document.getElementById('admin-dashboard').classList.add('open');
-  document.getElementById('customer-chatkit').style.display='none';
   const note = document.getElementById('data-source-note');
   if(note) note.textContent = "Loading...";
   await loadDashboardData();
@@ -792,10 +791,18 @@ async function openAdminDashboard(){
   renderInvoices();
 }
 function logoutAdmin(){
-  document.getElementById('admin-dashboard').classList.remove('open');
-  document.getElementById('customer-chatkit').style.display='';
+  sessionStorage.removeItem("mccStaffView");
+  sessionStorage.removeItem("mccAdminOpen");
+  location.reload();
 }
+if(sessionStorage.getItem("mccAdminOpen") === "1"){ openAdminDashboard(); }
 </script>
-  <script src="https://agents.zoho.in/resources/addon-chat/assets/js/agents-chat-sdk.js"></script><agents-chatkit id="customer-chatkit" ziaAgents='{orgId:"60079391537", entityId:"1215000000111060"}'></agents-chatkit>
+  <script src="https://agents.zoho.in/resources/addon-chat/assets/js/agents-chat-sdk.js"></script>
+  <script>
+    var mccEntityId = sessionStorage.getItem("mccStaffView") === "1" ? "1215000000141332" : "1215000000111060";
+    var mccChatEl = document.createElement("agents-chatkit");
+    mccChatEl.setAttribute("ziaAgents", `{orgId:"60079391537", entityId:"${mccEntityId}"}`);
+    document.body.appendChild(mccChatEl);
+  </script>
 </body>
 </html>
